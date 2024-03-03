@@ -47,7 +47,7 @@ for i=1, length do
         print("WRITE 'y' OR 'n', YOU IIIIDIOT!!")
     end
 
-    if i=length then
+    if i==length then
         print("I'm done, chap! Thank you for using our service!")
     end
 end
