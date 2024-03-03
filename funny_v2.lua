@@ -2,46 +2,48 @@ local function main()
     print("WELCOME TO LE STAIR MAKER 2000")
     print("REMEMBER! the stair will be making it FORWARD to where u place it... if u know what i mean (sex)")
     print("Enter da lengthe of le stairs")
-    local length = tonumber(read())
-
-    -- If you write wrong...
-    if type(length) ~= "number" then
-        fail()
-    end
-
-    print("Allah, du valgte den ", length, " du...")
-
-    print("Enter da widhte of le stairs")
-    local width = tonumber(read())
-
-    -- If you write wrong...
-    if type(width) ~= "number" then
-        fail()
-    end
-
-    print("DO YOU WANT ME TO ONLY PICK UP diamonds/gold/all dat sexy shit (not stone)? (type 'y' or 'n')")
-    local isPickUpOK = read()
-    if isPickUpOK == "y" then
-        local pickUpEpic = true;
-        local pickUpStatus = "Pick only up epic stuff";
-    elseif isPickUpOK == "n" then
-        local pickUpEpic = false;
-        local pickUpStatus = "Pick up everytheng :D"
-    else
-        fail()
-    end
-        
-    print("Length: ", length, " - Width: ", width, " - ", pickUpStatus, " - IS THIS OK? (type 'y' or 'n')")
-    local isOK = read()
-
-    if isOK == "n" then
-        main()
-    elseif isOK == "y" then
-        widthDig(width, "right")
-    else
-        fail()
-    end
 end
+
+local length = tonumber(read())
+
+-- If you write wrong...
+if type(length) ~= "number" then
+    fail()
+end
+
+print("Allah, du valgte den ", length, " du...")
+
+print("Enter da widhte of le stairs")
+local width = tonumber(read())
+
+-- If you write wrong...
+if type(width) ~= "number" then
+    fail()
+end
+
+print("DO YOU WANT ME TO ONLY PICK UP diamonds/gold/all dat sexy shit (not stone)? (type 'y' or 'n')")
+local isPickUpOK = read()
+if isPickUpOK == "y" then
+    local pickUpEpic = true;
+    local pickUpStatus = "Pick only up epic stuff";
+elseif isPickUpOK == "n" then
+    local pickUpEpic = false;
+    local pickUpStatus = "Pick up everytheng :D"
+else
+    fail()
+end
+    
+print("Length: ", length, " - Width: ", width, " - ", pickUpStatus, " - IS THIS OK? (type 'y' or 'n')")
+local isOK = read()
+
+if isOK == "n" then
+    main()
+elseif isOK == "y" then
+    widthDig(width, "right")
+else
+    fail()
+end
+
 
 function fail()
     print("Something went wrong!")
@@ -55,7 +57,7 @@ function digMove(where)
         local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.forward()
         turtle.turnLeft()
@@ -64,7 +66,7 @@ function digMove(where)
         local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.forward()
         turtle.turnRight()
@@ -74,7 +76,7 @@ function digMove(where)
         local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.forward()
         turtle.turnLeft()
@@ -83,21 +85,21 @@ function digMove(where)
         local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.forward()
     elseif where == "up" then
         local erBlokk = turtle.detectUp()
         if erBlokk then
             turtle.digUp()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.up()
     elseif where == "down" then
         local erBlokk = turtle.detectDown()
         if erBlokk then
             turtle.digDown()
-            pickup(pickUpEpic)
+            pickUp(pickUpEpic)
         end
         turtle.down()
     end
