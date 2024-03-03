@@ -45,31 +45,35 @@ end
 
 function fail()
     print("Something went wrong!")
+    main()
 end
 
 function digMove(where)
     if where == "right" then
-        local erBlokk = turtle.detectRight()
         turtle.turnRight()
+        local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
+            pickup(pickUpEpic)
         end
         turtle.forward()
         turtle.turnLeft()
     elseif where == "left" then
-        local erBlokk = turtle.detectLeft()
         turtle.turnLeft()
+        local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
+            pickup(pickUpEpic)
         end
         turtle.forward()
         turtle.turnRight()
     elseif where == "backward" then
+        turtle.turnLeft()
+        turtle.turnLeft()
         local erBlokk = turtle.detect()
         if erBlokk then
-            turtle.turnLeft()
-            turtle.turnLeft()
             turtle.dig()
+            pickup(pickUpEpic)
         end
         turtle.forward()
         turtle.turnLeft()
@@ -78,22 +82,49 @@ function digMove(where)
         local erBlokk = turtle.detect()
         if erBlokk then
             turtle.dig()
+            pickup(pickUpEpic)
         end
         turtle.forward()
     elseif where == "up" then
         local erBlokk = turtle.detectUp()
         if erBlokk then
             turtle.digUp()
+            pickup(pickUpEpic)
         end
         turtle.up()
     elseif where == "down" then
         local erBlokk = turtle.detectDown()
         if erBlokk then
             turtle.digDown()
+            pickup(pickUpEpic)
         end
         turtle.down()
     end
 end
+
+-- epic = no stone, normal = sex
+function pickUp(epicPickUp)
+    if epicPickUp then
+        turtle.suck()
+        for j=0, 16, do
+            turtle.select(j)
+            local id, count, damage = turtle.getItemDetail()
+            if id = minecraft:stone or minecraft:cobblestone or minecraft:dirt or minecraft:gravel or minecraft:sand or minecraft:sandstone or minecraft:clay or minecraft:mossy_cobblestone or minecraft:granite or minecraft:diorite or minecraft:andesite or minecraft:coarse_dirt or minecraft:podzol or minecraft:grass_block or minecraft:stone_bricks or minecraft:magma_block or minecraft:obsidian or minecraft:water or minecraft:lava then
+                for i=0, 42069, do
+                    turtle.turnLeft()
+                    if turtle.detect() == false then
+                        turtle.drop()
+                        break
+                    end
+                end
+            end
+        end
+    end
+    if not epicPickUp then
+        turtle.suck()
+    end
+end
+            
 
 function widthDig(width, where)
     if where == "right" then
@@ -122,5 +153,3 @@ function widthDig(width, where)
         end
     end
 end
-
-main()
