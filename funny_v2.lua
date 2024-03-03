@@ -1,55 +1,55 @@
+local pickUpEpic
+local pickUpStatus
+
 local function main()
     print("WELCOME TO LE STAIR MAKER 2000")
     print("REMEMBER! the stair will be making it FORWARD to where u place it... if u know what i mean (sex)")
     print("Enter da lengthe of le stairs")
-end
 
-local length = tonumber(read())
+    local length = tonumber(read())
 
 -- If you write wrong...
 if type(length) ~= "number" then
     fail()
 end
 
-print("Allah, du valgte den ", length, " du...")
+    print("Allah, du valgte den ", length, " du...")
 
-print("Enter da widhte of le stairs")
-local width = tonumber(read())
+    print("Enter da widhte of le stairs")
+    local width = tonumber(read())
 
--- If you write wrong...
-if type(width) ~= "number" then
-    fail()
+    -- If you write wrong...
+    if type(width) ~= "number" then
+        fail()
+    end
+
+    print("DO YOU WANT ME TO ONLY PICK UP diamonds/gold/all dat sexy shit (not stone)? (type 'y' or 'n')")
+    local isPickUpOK = read()
+    if isPickUpOK == "y" then
+        pickUpEpic = true;
+        pickUpStatus = "Pick only up epic stuff";
+    elseif isPickUpOK == "n" then
+        pickUpEpic = false;
+        pickUpStatus = "Pick up everytheng :D"
+    else
+        fail()
+    end
+        
+    print("Length: ", length, " - Width: ", width, " - ", pickUpStatus, " - IS THIS OK? (type 'y' or 'n')")
+    local isOK = read()
+
+    if isOK == "n" then
+        main()
+    elseif isOK == "y" then
+        widthDig(width, "right")
+    else
+        fail()
+    end
 end
-
-print("DO YOU WANT ME TO ONLY PICK UP diamonds/gold/all dat sexy shit (not stone)? (type 'y' or 'n')")
-local isPickUpOK = read()
-if isPickUpOK == "y" then
-    local pickUpEpic = true;
-    local pickUpStatus = "Pick only up epic stuff";
-elseif isPickUpOK == "n" then
-    local pickUpEpic = false;
-    local pickUpStatus = "Pick up everytheng :D"
-else
-    fail()
-end
-    
-print("Length: ", length, " - Width: ", width, " - ", pickUpStatus, " - IS THIS OK? (type 'y' or 'n')")
-local isOK = read()
-
-if isOK == "n" then
-    main()
-elseif isOK == "y" then
-    widthDig(width, "right")
-else
-    fail()
-end
-
 
 function fail()
     print("Something went wrong!")
 end
-
-main()
 
 function digMove(where)
     if where == "right" then
@@ -156,3 +156,5 @@ function widthDig(width, where)
         end
     end
 end
+
+main()
