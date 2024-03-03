@@ -45,8 +45,9 @@ end
 
 function fail()
     print("Something went wrong!")
-    main()
 end
+
+main()
 
 function digMove(where)
     if where == "right" then
@@ -106,11 +107,11 @@ end
 function pickUp(epicPickUp)
     if epicPickUp then
         turtle.suck()
-        for j=0, 16, do
+        for j=0, 16 do
             turtle.select(j)
             local id, count, damage = turtle.getItemDetail()
-            if id = minecraft:stone or minecraft:cobblestone or minecraft:dirt or minecraft:gravel or minecraft:sand or minecraft:sandstone or minecraft:clay or minecraft:mossy_cobblestone or minecraft:granite or minecraft:diorite or minecraft:andesite or minecraft:coarse_dirt or minecraft:podzol or minecraft:grass_block or minecraft:stone_bricks or minecraft:magma_block or minecraft:obsidian or minecraft:water or minecraft:lava then
-                for i=0, 42069, do
+            if id = minecraft:stone or id = minecraft:cobblestone or id = minecraft:dirt or id = minecraft:gravel or id = minecraft:sand or id = minecraft:sandstone or id = minecraft:clay or id = minecraft:mossy_cobblestone or id = minecraft:granite or id = minecraft:diorite or id = minecraft:andesite or id = minecraft:coarse_dirt or id = minecraft:podzol or id = minecraft:grass_block or id = minecraft:stone_bricks or id = minecraft:magma_block or id = minecraft:obsidian or id = minecraft:water or id = minecraft:lava then
+                for i=0, 42069 do
                     turtle.turnLeft()
                     if turtle.detect() == false then
                         turtle.drop()
