@@ -109,9 +109,9 @@ function pickUp(epicPickUp)
         turtle.suck()
         for j=0, 16 do
             turtle.select(j)
-            local id, count, damage = turtle.getItemDetail()
-            if id = minecraft:stone or id = minecraft:cobblestone or id = minecraft:dirt or id = minecraft:gravel or id = minecraft:sand or id = minecraft:sandstone or id = minecraft:clay or id = minecraft:mossy_cobblestone or id = minecraft:granite or id = minecraft:diorite or id = minecraft:andesite or id = minecraft:coarse_dirt or id = minecraft:podzol or id = minecraft:grass_block or id = minecraft:stone_bricks or id = minecraft:magma_block or id = minecraft:obsidian or id = minecraft:water or id = minecraft:lava then
-                for i=0, 42069 do
+            local id, count, damage == turtle.getItemDetail()
+            if id == minecraft:stone or id == minecraft:cobblestone or id == minecraft:dirt or id == minecraft:gravel or id == minecraft:sand or id == minecraft:sandstone or id == minecraft:clay or id == minecraft:mossy_cobblestone or id == minecraft:granite or id == minecraft:diorite or id == minecraft:andesite or id == minecraft:coarse_dirt or id == minecraft:podzol or id == minecraft:grass_block or id == minecraft:stone_bricks or id == minecraft:magma_block or id == minecraft:obsidian or id == minecraft:water or id == minecraft:lava then
+                for i=0, 42069, do
                     turtle.turnLeft()
                     if turtle.detect() == false then
                         turtle.drop()
