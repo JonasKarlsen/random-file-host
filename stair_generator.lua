@@ -13,7 +13,7 @@ local function start()
         --(re)
         start()
     end
-    print("You chose: " width)
+    print("You chose: ", width)
     print("How deep shall i go?")
     height = read()
     if type(height) ~= "number" then
@@ -21,7 +21,7 @@ local function start()
         --(re)
         start()
     end
-    print("You chose: " height)
+    print("You chose: ", height)
     print("You are chosen:")
     print("Width: ", width, " blocks,")
     print("Height: ", height, " blocks,")
@@ -98,23 +98,23 @@ local function widthDig(width, where)
             digMove(right)
         end
         turtle.down()
-        digMove(forward)
+        digMove("forward")
         for i=1, width do
             digMove(left)
         end
         turtle.down()
-        digMove(forward)
+        digMove("forward")
     elseif where == "left" then
         for i=1, width do
             digMove(left)
         end
         turtle.down()
-        digMove(forward)
+        digMove("forward")
         for i=1, width do
-            digMove(right)
+            digMove("right")
         end
         turtle.down()
-        digMove(forward)
+        digMove("forward")
     end
 end
 
