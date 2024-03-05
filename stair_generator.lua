@@ -17,7 +17,7 @@ end
 
 
 
-local function DigMove(where)
+local function digMove(where)
     -- LEFT
     if where == "left" then
         turtle.turnLeft()
@@ -158,7 +158,7 @@ end
 
 
 
-local function DigMove(where)
+local function digMove(where)
     -- LEFT
     if where == "left" then
         turtle.turnLeft()
