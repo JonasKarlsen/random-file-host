@@ -8,6 +8,7 @@ local function start()
     print("Hello, fella!")
     print("How WIDE do you want these stairs?")
     width = read()
+    toNumber(width)
     if type(width) ~= "number" then
         print("Please write me a valid number, my fella :(")
         --(re)
@@ -16,6 +17,7 @@ local function start()
     print("You chose: ", width)
     print("How deep shall i go?")
     height = read()
+    toNumber(height)
     if type(height) ~= "number" then
         print("Please write me a valid number, my fella :(")
         --(re)
@@ -37,7 +39,7 @@ local function start()
             print("The machine will not start without (char)coal/lava.")
             print("Please place this in any slot.")
             local y = 0
-            while y == 0 then
+            while y == 0 do
                 refuelScan()
                 if refuelScan() then
                     y = 1
