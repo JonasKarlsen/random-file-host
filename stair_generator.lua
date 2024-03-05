@@ -4,68 +4,6 @@ local isEpic = false
 local width = 0
 local height = 0
 
-local function start()
-    print("Hello, fella!")
-    print("How WIDE do you want these stairs?")
-    width = read()
-    toNumber(width)
-    if type(width) ~= "number" then
-        print("Please write me a valid number, my fella :(")
-        --(re)
-        start()
-    end
-    print("You chose: ", width)
-    print("How deep shall i go?")
-    height = read()
-    toNumber(height)
-    if type(height) ~= "number" then
-        print("Please write me a valid number, my fella :(")
-        --(re)
-        start()
-    end
-    print("You chose: ", height)
-    print("You are chosen:")
-    print("Width: ", width, " blocks,")
-    print("Height: ", height, " blocks,")
-    print(" ")
-    print("Press 'y' + ENTER to confirm")
-    local confirmation = read()
-    if confirmation ~= "y" then
-        --(re)
-        start()
-    else
-        refuelScan()
-        if turtle.getFuelLevel() == 0 then
-            print("The machine will not start without (char)coal/lava.")
-            print("Please place this in any slot.")
-            local y = 0
-            while y == 0 do
-                refuelScan()
-                if refuelScan() then
-                    y = 1
-                end
-            end
-        end
-        program()
-    end
-end
-
-local function program()
-    print("Go right or left? ( write'right'/'left')")
-    local where = read()
-    if where == "left" then
-        for k=1, height do
-            widthDig(width, "left")
-        end
-    elseif where == "right" then
-        for j=1, height do
-            widthDig(width, "right")
-        end
-    else
-        print("Please write either 'left' or 'right'")
-    end
-end
-
 local function refuelScan()
     for i=1, 16 do
         turtle.select(i)
@@ -206,6 +144,67 @@ local function DigMove(where)
         turtle.turnLeft()
     end
 end
+
+local function start()
+    print("Hello, fella!")
+    print("How WIDE do you want these stairs?")
+    width = tonumber(read())
+    if type(width) ~= "number" then
+        print("Please write me a valid number, my fella :(")
+        --(re)
+        start()
+    end
+    print("You chose: ", width)
+    print("How deep shall i go?")
+    height = tonumber(read())
+    if type(height) ~= "number" then
+        print("Please write me a valid number, my fella :(")
+        --(re)
+        start()
+    end
+    print("You chose: ", height)
+    print("You are chosen:")
+    print("Width: ", width, " blocks,")
+    print("Height: ", height, " blocks,")
+    print(" ")
+    print("Press 'y' + ENTER to confirm")
+    local confirmation = read()
+    if confirmation ~= "y" then
+        --(re)
+        start()
+    else
+        refuelScan()
+        if turtle.getFuelLevel() == 0 then
+            print("The machine will not start without (char)coal/lava.")
+            print("Please place this in any slot.")
+            local y = 0
+            while y == 0 do
+                refuelScan()
+                if refuelScan() then
+                    y = 1
+                end
+            end
+        end
+        program()
+    end
+end
+
+local function program()
+    print("Go right or left? ( write'right'/'left')")
+    local where = read()
+    if where == "left" then
+        for k=1, height do
+            widthDig(width, "left")
+        end
+    elseif where == "right" then
+        for j=1, height do
+            widthDig(width, "right")
+        end
+    else
+        print("Please write either 'left' or 'right'")
+    end
+end
+
 
 
 -- The program:
