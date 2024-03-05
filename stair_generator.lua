@@ -4,6 +4,62 @@ local isEpic = false
 local width = 0
 local height = 0
 
+local function funnyDig()
+    if isBlock() then
+        local whatBlock = scan()
+        turtle.dig()
+        turtle.forward()
+        turtle.digUp()
+        turtle.digDown()
+        pickUp(whatBlock, isEpic)
+    end
+end
+
+
+
+local function DigMove(where)
+    -- LEFT
+    if where == "left" then
+        turtle.turnLeft()
+        funnyDig()
+        turtle.turnRight() 
+    -- RIGHT
+    elseif where == "right" then
+        turtle.turnRight()
+        funnyDig()
+        turtle.turnLeft()
+    -- UP
+    elseif where == "up" then
+        if isBlockUp() then
+            local whatBlock = scanUp()
+            turtle.digUp()
+            pickUp(whatBlock, isEpic)
+        end
+        turtle.up()
+    end
+    -- DOWN
+    if where == "down" then
+        if isBlockDown() then
+            local whatBlock = scanDown()
+            turtle.digDown()
+            pickUp(whatBlock, isEpic)
+        end
+        turtle.down()
+    end
+    -- FORWARD
+    if where == "forward" then
+        funnyDig()
+    end
+    -- BACKWARD
+    if where == "backward" then
+        turtle.turnLeft()
+        turtle.turnLeft()
+        funnyDig()
+        turtle.turnLeft()
+        turtle.turnLeft()
+    end
+end
+
 local function refuelScan()
     for i=1, 16 do
         turtle.select(i)
