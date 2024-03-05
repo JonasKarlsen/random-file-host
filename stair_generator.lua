@@ -4,6 +4,16 @@ local isEpic = false
 local width = 0
 local height = 0
 
+local function isBlock()
+    return turtle.detect()
+end
+local function isBlockUp()
+    return turtle.detectUp()
+end
+local function isBlockDown()
+    return turtle.detectDown()
+end
+
 local function funnyDig()
     if isBlock() then
         local whatBlock = scan()
@@ -133,16 +143,6 @@ local function pickUp(name, epic)
             return true
         end
     end
-end
-
-local function isBlock()
-    return turtle.detect()
-end
-local function isBlockUp()
-    return turtle.detectUp()
-end
-local function isBlockDown()
-    return turtle.detectDown()
 end
 
 local function funnyDig()
