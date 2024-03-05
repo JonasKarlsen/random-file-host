@@ -62,6 +62,9 @@ local function funnyDig()
         turtle.forward()
         turtle.digUp()
         turtle.digDown()
+        turtle.up()
+        turtle.digUp()
+        turtle.down()
         pickUp(whatBlock, isEpic)
     end
 end
@@ -242,6 +245,18 @@ local function start()
         start()
     end
     print("You chose: ", height)
+    print("Do you want to enable EPIC mode?")
+    print("This mode make the machine")
+    print("valuable items... do you want? ('y'/'n')")
+    local inputEpic = read()
+    if inputEpic == "y" then
+        isEpic = true
+    elseif inputEpic == "n" then
+        isEpic = false
+    else
+        print("Write valid!!! ,my fella!!")
+        start()
+    end
     print("You are chosen:")
     print("Width: ", width, " blocks,")
     print("Height: ", height, " blocks,")
