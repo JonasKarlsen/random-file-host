@@ -4,6 +4,47 @@ local isEpic = false
 local width = 0
 local height = 0
 
+--isEpic: only valuables
+local function pickUp(name, epic)
+    if name == "minecraft:stone" or name == "minecraft:cobblestone" or name == "minecraft:dirt" or name == "minecraft:gravel" or name == "minecraft:sand" or name == "minecraft:sandstone" or name == "minecraft:clay" or name == "minecraft:mossy_cobblestone" or name == "minecraft:granite" or name == "minecraft:diorite" or name == "minecraft:andesite" or name == "minecraft:coarse_dirt" or name == "minecraft:podzol" or name == "minecraft:grass_block" or name == "minecraft:stone_bricks" or name == "minecraft:magma_block" or name == "minecraft:obsidian" or name == "minecraft:water" or name == "minecraft:lava" then
+        if epic then
+            return false
+        elseif not epic then
+            turtle.suck()
+            turtle.suckUp()
+            turtle.suckDown()
+            return true
+    -- if the block is anything else, we will pick it up anyway:
+        else
+            turtle.suck()
+            turtle.suckUp()
+            turtle.suckDown()
+            return true
+        end
+    end
+
+    for j=0, 16 do
+        turtle.select(j)
+        local id, count, damage = turtle.getItemDetail()
+        if (id.name == "minecraft:bucket") then
+            turtle.drop()
+        end
+    end
+end
+
+local function scan()
+    local success, data = turtle.inspect()
+    return data.name
+end
+local function scanUp()
+    local success, data = turtle.inspectUp()
+    return data.name
+end
+local function scanDown()
+    local success, data = turtle.inspectDown()
+    return data.name
+end
+
 local function isBlock()
     return turtle.detect()
 end
@@ -85,27 +126,10 @@ local function refuelScan()
     end
 end
 
-local function scan()
-    local success, data = turtle.inspect()
-    return data.name
-end
-local function scanUp()
-    local success, data = turtle.inspectUp()
-    return data.name
-end
-local function scanDown()
-    local success, data = turtle.inspectDown()
-    return data.name
-end
-
 local function widthDig(width, where)
     if where == "right" then
         for i=1, width do
             digMove("right")
-            turtle.up()
-            turtle.digMove("up")
-            turtle.down()
-            turtle.down()
         end
         turtle.down()
         digMove("forward")
@@ -117,10 +141,6 @@ local function widthDig(width, where)
     elseif where == "left" then
         for i=1, width do
             digMove("left")
-            turtle.up()
-            turtle.digMove("up")
-            turtle.down()
-            turtle.down()
         end
         turtle.down()
         digMove("forward")
@@ -129,27 +149,6 @@ local function widthDig(width, where)
         end
         turtle.down()
         digMove("forward")
-    end
-end
-
-
---isEpic: only valuables
-local function pickUp(name, epic)
-    if name == "minecraft:stone" or name == "minecraft:cobblestone" or name == "minecraft:dirt" or name == "minecraft:gravel" or name == "minecraft:sand" or name == "minecraft:sandstone" or name == "minecraft:clay" or name == "minecraft:mossy_cobblestone" or name == "minecraft:granite" or name == "minecraft:diorite" or name == "minecraft:andesite" or name == "minecraft:coarse_dirt" or name == "minecraft:podzol" or name == "minecraft:grass_block" or name == "minecraft:stone_bricks" or name == "minecraft:magma_block" or name == "minecraft:obsidian" or name == "minecraft:water" or name == "minecraft:lava" then
-        if epic then
-            return false
-        elseif not epic then
-            turtle.suck()
-            turtle.suckUp()
-            turtle.suckDown()
-            return true
-    -- if the block is anything else, we will pick it up anyway:
-        else
-            turtle.suck()
-            turtle.suckUp()
-            turtle.suckDown()
-            return true
-        end
     end
 end
 
