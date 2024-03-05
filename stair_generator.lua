@@ -95,18 +95,18 @@ end
 local function widthDig(width, where)
     if where == "right" then
         for i=1, width do
-            digMove(right)
+            digMove("right")
         end
         turtle.down()
         digMove("forward")
         for i=1, width do
-            digMove(left)
+            digMove("left")
         end
         turtle.down()
         digMove("forward")
     elseif where == "left" then
         for i=1, width do
-            digMove(left)
+            digMove("left")
         end
         turtle.down()
         digMove("forward")
@@ -124,19 +124,18 @@ local function pickUp(name, epic)
     if name == "minecraft:stone" or name == "minecraft:cobblestone" or name == "minecraft:dirt" or name == "minecraft:gravel" or name == "minecraft:sand" or name == "minecraft:sandstone" or name == "minecraft:clay" or name == "minecraft:mossy_cobblestone" or name == "minecraft:granite" or name == "minecraft:diorite" or name == "minecraft:andesite" or name == "minecraft:coarse_dirt" or name == "minecraft:podzol" or name == "minecraft:grass_block" or name == "minecraft:stone_bricks" or name == "minecraft:magma_block" or name == "minecraft:obsidian" or name == "minecraft:water" or name == "minecraft:lava" then
         if epic then
             return false
-        end
-        if not epic then
+        elseif not epic then
+            turtle.suck()
+            turtle.suckUp()
+            turtle.suckDown()
+            return true
+    -- if the block is anything else, we will pick it up anyway:
+        else
             turtle.suck()
             turtle.suckUp()
             turtle.suckDown()
             return true
         end
-    -- if the block is anything else, we will pick it up anyway:
-    else
-        turtle.suck()
-        turtle.suckUp()
-        turtle.suckDown()
-        return true
     end
 end
 
