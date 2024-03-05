@@ -8,7 +8,7 @@ local function refuelScan()
     for i=1, 16 do
         turtle.select(i)
         local id, count, damage = turtle.getItemDetail()
-        if id == "minecraft:coal" or id == "minecraft:charcoal" or id == "minecraft:lava_bucket" then
+        if id.name == "minecraft:coal" or id.name == "minecraft:charcoal" or id.name == "minecraft:lava_bucket" then
             turtle.refuel()
             print("Refilling fuel")
             return true
