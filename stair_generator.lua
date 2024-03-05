@@ -117,8 +117,8 @@ end
 local function refuelScan()
     for i=1, 16 do
         turtle.select(i)
-        local block, counter, damager = turtle.getItemDetail()
-        if block.name == "minecraft:coal" or block.name == "minecraft:charcoal" or block.name == "minecraft:lava_bucket" then
+        local id, count, damage = turtle.getItemDetail()
+        if id.name == "minecraft:coal" or id.name == "minecraft:charcoal" or id.name == "minecraft:lava_bucket" then
             turtle.refuel()
             print("Refilling fuel")
             return true
@@ -245,18 +245,6 @@ local function start()
         start()
     end
     print("You chose: ", height)
-    print("Do you want to enable EPIC mode?")
-    print("This mode make the machine")
-    print("valuable items... do you want? ('y'/'n')")
-    local inputEpic = read()
-    if inputEpic == "y" then
-        isEpic = true
-    elseif inputEpic == "n" then
-        isEpic = false
-    else
-        print("Write valid!!! ,my fella!!")
-        start()
-    end
     print("You are chosen:")
     print("Width: ", width, " blocks,")
     print("Height: ", height, " blocks,")
