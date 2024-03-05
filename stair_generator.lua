@@ -56,7 +56,6 @@ local function isBlockDown()
 end
 
 local function funnyDig()
-    if isBlock() then
         local whatBlock = scan()
         turtle.dig()
         turtle.forward()
@@ -66,7 +65,6 @@ local function funnyDig()
         turtle.digUp()
         turtle.down()
         pickUp(whatBlock, isEpic)
-    end
 end
 
 
@@ -156,14 +154,12 @@ local function widthDig(width, where)
 end
 
 local function funnyDig()
-    if isBlock() then
         local whatBlock = scan()
         turtle.dig()
         turtle.forward()
         turtle.digUp()
         turtle.digDown()
         pickUp(whatBlock, isEpic)
-    end
 end
 
 
