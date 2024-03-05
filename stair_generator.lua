@@ -130,6 +130,10 @@ local function widthDig(width, where)
     if where == "right" then
         for i=1, width do
             digMove("right")
+            turtle.up()
+            turtle.digMove("up")
+            turtle.down()
+            turtle.down()
         end
         turtle.down()
         digMove("forward")
@@ -141,6 +145,10 @@ local function widthDig(width, where)
     elseif where == "left" then
         for i=1, width do
             digMove("left")
+            turtle.up()
+            turtle.digMove("up")
+            turtle.down()
+            turtle.down()
         end
         turtle.down()
         digMove("forward")
