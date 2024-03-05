@@ -145,6 +145,22 @@ local function DigMove(where)
     end
 end
 
+local function program()
+    print("Go right or left? ( write'right'/'left')")
+    local where = read()
+    if where == "left" then
+        for k=1, height do
+            widthDig(width, "left")
+        end
+    elseif where == "right" then
+        for j=1, height do
+            widthDig(width, "right")
+        end
+    else
+        print("Please write either 'left' or 'right'")
+    end
+end
+
 local function start()
     print("Hello, fella!")
     print("How WIDE do you want these stairs?")
@@ -189,21 +205,7 @@ local function start()
     end
 end
 
-local function program()
-    print("Go right or left? ( write'right'/'left')")
-    local where = read()
-    if where == "left" then
-        for k=1, height do
-            widthDig(width, "left")
-        end
-    elseif where == "right" then
-        for j=1, height do
-            widthDig(width, "right")
-        end
-    else
-        print("Please write either 'left' or 'right'")
-    end
-end
+
 
 
 
